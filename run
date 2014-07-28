@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+/etc/init.d/rsyslog start
+flarei --daemonize -f /etc/flarei.conf 
+flared --daemonize -f /etc/flared.conf 
+echo "node role localhost 12121 master 1 0" | nc localhost 12120
+tail -f /var/log/syslog
